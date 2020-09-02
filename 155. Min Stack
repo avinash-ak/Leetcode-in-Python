@@ -1,0 +1,40 @@
+#Easy using 2 stacks
+class MinStack:
+    #Creating 2 stacks 1 is to maintain the elements and other is to maintain min element
+    def __init__(self):
+        self.stack=[]
+        self.minStack=[]
+        self.size=0
+        
+    #pushing the elements into the stack 
+    def push(self, x):
+        if self.size==0:
+            self.minStack.append(x)
+        else:
+            if x <= self.minStack[-1]:
+                self.minStack.append(x)
+        self.stack.append(x)
+        self.size+=1
+    #pop the element from the stack
+    def pop(self):
+        temp= self.stack.pop()
+        self.size-=1
+        if temp==self.minStack[-1]:
+            self.minStack.pop()
+        
+    #get the top element from the stack
+    def top(self):
+        return self.stack[-1]
+
+    #get the min element from minStack which is maintained to get minimum element 
+    def getMin(self):
+        return self.minStack[-1]
+
+obj = MinStack()
+obj.push(5)
+obj.push(2)
+obj.push(1)
+param_3 = obj.top()
+print(param_3)
+param_4 = obj.getMin()
+print(param_4)
