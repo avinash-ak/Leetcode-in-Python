@@ -1,3 +1,4 @@
+#using MaxHeap
 import heapq
 class Solution:
     def findKthLargest(self, nums: List[int], k: int) -> int:
@@ -14,6 +15,19 @@ class Solution:
         return res
 #TC:- O(nlogn) n-> to build the heap structure and logn to heapify
 #SC:- O(n) extra space
+#using MinHeap
+from heapq import heapify, heappop, heappush
+def findKthLargest(nums,k):
+    numsHeap = nums[:k]
+    heapify(numsHeap) 
+    for i in range(k , len(nums)):
+        if nums[i] > numsHeap[0]:
+            heappop(numsHeap)
+            heappush(numsHeap, nums[i])
+    print(numsHeap[0])
+nums=[3,2,1,5,6,4]
+k=2
+findKthLargest(nums,k)
 '''
 import heapq
 ls=[1,2,7,3,9,5,8]
